@@ -1,0 +1,43 @@
+{% extends 'base2.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Abrindo chamado{% endblock %}
+
+{% block content %}
+
+<style>
+
+.ajuste{
+   width: 400px;
+}
+
+
+</style>
+
+
+ <div class=" offset-1 col-10 list-div ajuste">
+   <div class="box">
+      
+       <!--<h2><span>Solicite um item:</span></h2>-->
+       <h5 class="text-uppercase font-weight-light text-monospace">Preencha os campos abaixo!</h5>
+       <br>
+       
+       <form  method="POST"  enctype="multipart/form-data">
+          {% csrf_token %}
+          {{ form|crispy }} 
+          <br>
+          <input type="submit" class="btn btn-primary botao text-uppercase font-weight-light text-monospace" value="Solicitar">
+          <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>-->
+       </form>
+   </div>
+</div>
+
+
+{% endblock %}
+
+
+
+
+
+
+

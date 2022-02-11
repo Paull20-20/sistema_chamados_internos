@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de tarefas{% endblock %}
+
+{% block content %}
+
+            <tr>
+                <td>Teste</td>
+                <td>Notebook acer</td>
+                <td>Teste</td>
+                <td>Teste</td>
+                <td>Teste</td>
+                <td> 
+                    <button type="button" class="btn btn-primary" onclick="editar()">
+                        <i class="fas fa-pencil-alt"></i>
+                    </button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger" onclick="excluir()">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </td>
+            </tr>
+
+
+{% endblock %}

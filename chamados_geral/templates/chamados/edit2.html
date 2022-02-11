@@ -1,0 +1,29 @@
+{% extends 'base3.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Editando{% endblock %}
+
+{% block content %}
+
+
+<style>
+
+    .ajuste{
+       width: 400px;
+    }
+    
+    
+    </style>
+    
+
+<div class="offset-1 col-10 list-div ajuste">
+    <form method="POST">
+        {% csrf_token %}
+        {{ form|crispy }}
+     
+        <input type="submit" class="btn btn-primary botao text-uppercase font-weight-light text-monospace" value="Editar">
+    </form>
+</div>
+
+
+{% endblock %}
