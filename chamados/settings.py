@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 import os
+import django_heroku
 from pathlib import Path
 
 #BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -27,7 +28,7 @@ SECRET_KEY = 'django-insecure-v2zfht&i(yv=q87))i=ww2+s=cw@i%&%^0832t-gyj%6x+6h3d
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://chamados-geral.herokuapp.com/'] #url que tem acesso ao projeto
 
 
 # Application definition
@@ -157,3 +158,4 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4' #or bootstrap3
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/accounts/login'
 
+django_heroku.settings(locals())
