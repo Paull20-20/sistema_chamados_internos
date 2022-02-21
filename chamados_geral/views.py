@@ -1,14 +1,25 @@
 from django.http import HttpResponse
 from django.shortcuts import redirect, render, get_object_or_404, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse 
+from django.http import HttpResponseRedirect  
 #from urllib import request
 from .forms import ChamadoForm, ChamadoForm2
 from django.contrib import messages
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from django.core.files.storage import FileSystemStorage #import para visualizar anexos
+from django.contrib import admin
+#from projeto3.myapp.models import Author
+import logging
+from . import models
+
+from django.shortcuts import render
+from .forms import Chamado_geral
 
 from .models import Chamado_geral
+
+from .forms import ChamadoForm2
+
 
 # Create your views here.
 @login_required
@@ -68,20 +79,76 @@ def editChamado(request, id):
     else:
         return render(request, 'chamados/editChamado.html', {'form': form, 'chamado': chamado})
 
-
 @login_required
 def editChamado2(request, id):
     chamado = get_object_or_404(Chamado_geral, pk=id)
     form = ChamadoForm2(instance=chamado)
     
-
     if(request.method == 'POST'):
-        form = ChamadoForm2(request.POST, instance=chamado)
+        form = ChamadoForm2(request.POST, instance=chamado) #form = ChamadoForm2(request.POST, request.FILES) tentativa de resolver bug 
 
         if(form.is_valid()):
             #chamado = form.save(commit=False) #commit=False serve para que o form só envie dados pro banco após clicar no botão de solicitar.
             #chamado.user = request.user
+            #chamado = form.save(commit=False)
+           # arquivo = request.FILES['document']
+            #print(chamado.Arquivo.name)
+           # print(chamado.Arquivo.size)
+            #ChamadoForm2(request.FILES['Arquivo'])
+            titulo = request.POST["Título"]
+            descrição = request.POST["Descrição"]   
+            arquivo = request.FILES["Arquivo"]
+            status = request.POST["Status"]
+
+            chamado = models.Chamado_geral(
+                Título = titulo,
+                Descrição = descrição,
+                Arquivo = arquivo,
+                Status = status
+
+            )
             chamado.save()
+            #print('arquivo teste: ', chamado.Arquivo)
+            #logging.info('bug:')
+            messages.info(request, 'Chamado editado com sucesso!')
+            return redirect('/admin3/')
+        else:
+            return render(request, 'chamados/edit2.html', {'form': form, 'chamado': chamado})
+    else:
+        return render(request, 'chamados/edit2.html', {'form': form, 'chamado': chamado})
+
+@login_required
+def editChamado3(request, id):
+
+    chamado = get_object_or_404(Chamado_geral, pk=id)
+    form = ChamadoForm2(instance=chamado)
+    
+    if(request.method == 'POST'):
+        form = ChamadoForm2(request.POST, instance=chamado) #form = ChamadoForm2(request.POST, request.FILES) tentativa de resolver bug 
+
+        if(form.is_valid()):
+            #chamado = form.save(commit=False) #commit=False serve para que o form só envie dados pro banco após clicar no botão de solicitar.
+            #chamado.user = request.user
+            #chamado = form.save(commit=False)
+           # arquivo = request.FILES['document']
+            #print(chamado.Arquivo.name)
+           # print(chamado.Arquivo.size)
+            #ChamadoForm2(request.FILES['Arquivo'])
+            titulo = request.POST["Título"]
+            descrição = request.POST["Descrição"]
+            arquivo = request.FILES["Arquivo"]
+            status = request.POST["Status"]
+
+            chamado = models.Chamado_geral(
+                Título = titulo,
+                Descrição = descrição,
+                Arquivo = arquivo,
+                Status = status
+
+            )
+            chamado.save()
+            #print('arquivo teste: ', chamado.Arquivo)
+            #logging.info('bug:')
             messages.info(request, 'Chamado editado com sucesso!')
             return redirect('/admin3/')
         else:
@@ -107,6 +174,15 @@ def midia(request):
         fs.save(uploaded_file.name, uploaded_file)
     return render(request, 'upload.html')
 
+    
+@login_required #Não está me uso
+def midia2(request):
+    if request.method == 'POST':
+        uploaded_file = request.FILES['document']
+        fs = FileSystemStorage()
+        fs.save(uploaded_file.name, uploaded_file)
+    return render(request)
+
 
 @login_required
 def admin2(request):
@@ -123,19 +199,25 @@ def admin2(request):
 
     else:
         form = ChamadoForm2()
-        return render(request, 'chamados/admin2.html', {'form': form})
-
+        return render(request, 'chamados/admin2-upload.html', {'form': form})
 
 
 @login_required
 def admin3(request):
 
     chamados = Chamado_geral.objects.all().order_by('-created_at')
+    
     paginator = Paginator(chamados, 10)
     page = request.GET.get('page')
     chamados = paginator.get_page(page)
 
     return render(request, 'chamados/admin3.html', {'chamados': chamados})
+
+
+
+
+
+
 
 
 

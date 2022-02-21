@@ -6,7 +6,7 @@
 {% block content %}
 
 
-<style>
+    <style>
 
     .ajuste{
        width: 400px;
@@ -17,13 +17,79 @@
     
 
 <div class="offset-1 col-10 list-div ajuste">
-    <form method="POST">
+    <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form|crispy }}
-     
         <input type="submit" class="btn btn-primary botao text-uppercase font-weight-light text-monospace" value="Editar">
     </form>
 </div>
 
 
 {% endblock %}
+
+
+<!--<div class="offset-1 col-10 list-div ajuste">
+    <form method="POST" enctype="multipart/form-data">
+        
+        <input type="text" name="Título" placeholder="Enter a title">
+        <input type="text" name="Descrição" placeholder="Enter a descrição">
+        <input type="file" name="Arquivo">
+        <input type="text" name="Status">
+        
+        {% csrf_token %}
+       
+        <input type="submit" class="btn btn-primary botao text-uppercase font-weight-light text-monospace" value="Editar">
+    </form>
+</div>
+
+
+
+
+    <style>
+
+    .ajuste{
+       width: 400px;
+    }
+    
+    
+    </style>
+    
+
+<div class="offset-1 col-10 list-div ajuste">
+    <form method="POST" enctype="multipart/form-data">
+        
+        <input type="text" name="Título" value="Lazer 2" maxlength="255" class="textinput textInput form-control" required="" id="id_Título">
+        <textarea name="Descrição" cols="40" rows="10" class="textarea form-control" required="" id="id_Descrição">4gg4tg4tg4 2</textarea>
+        <input type="file" name="Arquivo" class="clearablefileinput form-control-file" id="id_Arquivo">
+        <select name="Status" class="select form-control" required="" id="id_Status"> <option value="">---------</option> <option value="Solicitado" selected="">Solicitado</option> <option value="Em_andamento">Em_andamento</option> <option value="Concluído">Concluído</option>
+        </select>
+        {% csrf_token %}
+      
+        <input type="submit" class="btn btn-primary botao text-uppercase font-weight-light text-monospace" value="Editar">
+    </form>
+</div>
+
+
+
+
+
+<div class="offset-1 col-10 list-div ajuste">
+    <form method="POST" enctype="multipart/form-data">
+        
+        <input type="text" name="Título" placeholder="Enter a title">
+        <input type="text" name="Descrição" placeholder="Enter a descrição">
+        <input type="file" name="Arquivo">
+        <input type="text" name="Status">
+        
+        {% csrf_token %}
+       
+        <input type="submit" class="btn btn-primary botao text-uppercase font-weight-light text-monospace" value="Editar">
+    </form>
+</div>-->
+
+
+
+
+
+-->
+

@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 import os
 from pathlib import Path
 
+#BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -80,6 +82,7 @@ WSGI_APPLICATION = 'chamados.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -140,18 +143,17 @@ USE_L10N = True
 
 USE_TZ = False
 
+
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') 
+#STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Arquivos de media/upload
-MEDIA_URL = '/midia/' # Aqui basicamente gera um link para clicar e visualizar o anexo recebido/enviado!
 MEDIA_ROOT = os.path.join(BASE_DIR, 'midia') #caminho absoluto da url
+MEDIA_URL = '/midia/' # Aqui basicamente gera um link para clicar e visualizar o anexo recebido/enviado!
 
 
 #O comando abaixo serve para deixar o crispy_forms estilizado com bootstrap4
 CRISPY_TEMPLATE_PACK = 'bootstrap4' #or bootstrap3
-
 LOGIN_REDIRECT_URL = '/'
-
 LOGOUT_REDIRECT_URL = '/accounts/login'
 

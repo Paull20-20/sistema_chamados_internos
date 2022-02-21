@@ -21,8 +21,7 @@
        <!--<h2><span>Solicite um item:</span></h2>-->
        <h5 class="text-uppercase font-weight-light text-monospace">Admin</h5>
        <br>
-       
-       <form  method="POST"  enctype="multipart/form-data">
+       <form  method="POST" enctype="multipart/form-data">
           {% csrf_token %}
           {{ form|crispy }} 
           <br>
