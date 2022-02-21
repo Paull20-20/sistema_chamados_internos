@@ -158,4 +158,6 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4' #or bootstrap3
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/accounts/login'
 
+
+#teste deploy
 django_heroku.settings(locals())
