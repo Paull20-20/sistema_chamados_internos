@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 import os
-import django_heroku
+import django_on_heroku
 from pathlib import Path
 
 #BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -160,4 +160,5 @@ LOGOUT_REDIRECT_URL = '/accounts/login'
 
 
 #teste deploy
-django_heroku.settings(locals())
+django_on_heroku.settings(locals())
+
