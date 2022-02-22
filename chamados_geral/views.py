@@ -20,6 +20,7 @@ from .models import Chamado_geral
 
 from .forms import ChamadoForm2
 
+#como fazer deploy: https://www.treinaweb.com.br/blog/deploy-de-uma-aplicacao-django-no-heroku
 
 # Create your views here.
 @login_required
