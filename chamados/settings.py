@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-v2zfht&i(yv=q87))i=ww2+s=cw@i%&%^0832t-gyj%6x+6h3d
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://bity-chamados2.herokuapp.com/'] #url que tem acesso ao projeto
+ALLOWED_HOSTS = ['https://damp-refuge-70801.herokuapp.com/'] #url que tem acesso ao projeto
 
 
 # Application definition
