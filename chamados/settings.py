@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-v2zfht&i(yv=q87))i=ww2+s=cw@i%&%^0832t-gyj%6x+6h3d
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://bity-chamados.herokuapp.com/'] #url que tem acesso ao projeto
+ALLOWED_HOSTS = ['https://bity-chamados2.herokuapp.com/'] #url que tem acesso ao projeto
 
 
 # Application definition
@@ -160,5 +160,6 @@ LOGOUT_REDIRECT_URL = '/accounts/login'
 
 
 #teste deploy
-django_heroku.settings(locals())
+django_heroku.settings(locals()) #mostra ao heroku que utilizamos tudo que está local dentro do heroku
+
 
